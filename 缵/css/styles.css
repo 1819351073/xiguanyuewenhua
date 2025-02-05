@@ -1,0 +1,444 @@
+/* 重置样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 基础样式 */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    padding: 20px;
+    background: radial-gradient(circle at center,
+        #E6E6FA 0%,    /* 淡紫色 */
+        #FFB6C1 30%,   /* 浅粉红 */
+        #DDA0DD 60%,   /* 梅红色 */
+        #B0C4DE 100%   /* 浅钢蓝 */
+    );
+    overflow-x: hidden;
+}
+
+/* 添加立体感和层次 */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at center,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    pointer-events: none;
+    border-radius: 30px;
+}
+
+/* 添加光晕效果 */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+/* 主要内容区域样式 */
+main {
+    min-height: 100vh;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(255, 255, 255, 0.15);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    box-shadow: 
+        0 0 50px rgba(255, 255, 255, 0.2),
+        inset 0 0 30px rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+/* 导航面板样式 */
+.nav-panel {
+    position: fixed;
+    top: 20px;
+    right: -170px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 15px 0 0 15px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 200px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-panel:hover {
+    right: 0;
+    transform: translateX(0);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 导航按钮样式 */
+.nav-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: #000;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.nav-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-button:active {
+    transform: translateX(-5px) scale(0.98);
+}
+
+.nav-button i {
+    font-size: 18px;
+    color: #000;
+    transition: transform 0.3s ease;
+}
+
+.nav-button:hover i {
+    transform: scale(1.2) rotate(360deg);
+}
+
+.nav-button span {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.nav-button:hover span {
+    transform: translateX(5px);
+}
+
+/* 添加点击波纹效果 */
+@keyframes ripple {
+    to {
+        transform: translate(-50%, -50%) scale(4);
+        opacity: 0;
+    }
+}
+
+.nav-button.clicked::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+/* 信息卡片样式 */
+.info-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 20px;
+    z-index: 1001;
+    min-width: 300px;
+    animation: fadeIn 0.3s ease;
+    display: none;
+}
+
+/* 添加窗口控制按钮样式 */
+.window-controls {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    gap: 8px;
+}
+
+.control-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-btn {
+    background-color: #ff5f57;
+    border: 1px solid #e0443e;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn:hover {
+    background-color: #ff7b73;
+    transform: scale(1.1);
+}
+
+.close-btn:active {
+    background-color: #e0443e;
+    transform: scale(0.95);
+}
+
+/* 信息按钮样式 */
+.info-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.info-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* 学生信息样式 */
+.student-info {
+    color: #000;
+    text-align: center;
+}
+
+.student-info p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 动画容器 */
+.animation-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 形状样式 */
+.shape {
+    width: 80px;
+    height: 80px;
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    animation: initialBounce 1s cubic-bezier(0.36, 0, 0.66, 1) forwards;
+    cursor: pointer;
+}
+
+/* 标题样式 */
+.title {
+    color: #000;
+    font-size: 6rem;
+    font-weight: bold;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    cursor: pointer;
+    letter-spacing: 4px;
+}
+
+.title.show {
+    animation: titleAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.title.hide {
+    animation: titleDisappear 0.5s ease forwards;
+}
+
+/* 初始弹跳动画 */
+@keyframes initialBounce {
+    0% {
+        transform: translateY(-300px);
+        border-radius: 50%;
+    }
+    70% {
+        transform: translateY(0);
+        border-radius: 50%;
+    }
+    85% {
+        transform: translateY(-60px);
+        border-radius: 45%;
+    }
+    100% {
+        transform: translateY(0);
+        border-radius: 0;
+    }
+}
+
+/* 标题出现动画 */
+@keyframes titleAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 标题消失动画 */
+@keyframes titleDisappear {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
+
+/* 形状回滚动画 */
+@keyframes shapeRollback {
+    0% {
+        transform: translateX(-100vw) rotate(0deg);
+        border-radius: 0;
+    }
+    60% {
+        transform: translateX(0) rotate(720deg);
+        border-radius: 0;
+    }
+    75% {
+        transform: translateY(-50px) rotate(720deg);
+        border-radius: 25%;
+    }
+    100% {
+        transform: translateY(0) rotate(720deg);
+        border-radius: 50%;
+    }
+}
+
+/* 添加圆球消失动画 */
+@keyframes shapeFadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* 添加圆球重新出现动画 */
+@keyframes shapeReappear {
+    0% {
+        opacity: 0;
+        transform: translateY(-300px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-300px);
+    }
+}
+
+/* 箭头动画样式 */
+.scroll-arrow {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: #000;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    z-index: 100;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translate(-50%, 0);
+    }
+    40% {
+        transform: translate(-50%, -20px);
+    }
+    60% {
+        transform: translate(-50%, -10px);
+    }
+} 

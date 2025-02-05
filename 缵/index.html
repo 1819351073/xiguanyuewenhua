@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的网站</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="cursor-system/cursor-system.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="js/main.js" defer></script>
+    <script src="cursor-system/cursor-system.js" defer></script>
+    <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+    <div class="nav-panel">
+        <button class="nav-button about-btn clickable">
+            <i class="fas fa-user"></i>
+            <span>关于我们</span>
+        </button>
+    </div>
+
+    <div class="info-card about-card" style="display: none;">
+        <div class="window-controls">
+            <div class="control-button close-btn clickable"></div>
+        </div>
+        <div class="info-buttons">
+            <button class="info-btn name-btn clickable">
+                <i class="fas fa-id-card"></i>
+                <span>姓名：李骏伟</span>
+            </button>
+            <button class="info-btn phone-btn clickable">
+                <i class="fas fa-phone"></i>
+                <span>电话：13610090948</span>
+            </button>
+            <button class="info-btn email-btn clickable">
+                <i class="fas fa-envelope"></i>
+                <span>邮箱：1819351073@qq.com</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="info-card student-card" style="display: none;">
+        <div class="window-controls">
+            <div class="control-button close-btn clickable"></div>
+        </div>
+        <div class="student-info">
+            <p>学号：202105161020</p>
+            <p>班级：21数媒VR本科1班</p>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <div class="animation-container">
+                <div class="shape"></div>
+                <h1 class="title" style="display: none;">缵·西关粤文化</h1>
+            </div>
+            <div class="scroll-arrow" style="display: none;">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+    </main>
+
+    <section class="chat-section" style="display: none;">
+        <div class="chat-container">
+            <div class="chat-header">
+                <button class="back-btn clickable">
+                    <i class="fas fa-arrow-left"></i>
+                    返回主页
+                </button>
+                <h2>AI 助手</h2>
+            </div>
+            <div class="chat-messages">
+                <!-- 消息会在这里动态添加 -->
+            </div>
+            <div class="chat-input">
+                <textarea placeholder="输入消息..." class="message-input"></textarea>
+                <button class="send-btn clickable">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+</body>
+</html> 

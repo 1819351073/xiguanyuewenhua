@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none !important;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: auto;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: #f4f4f4;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-button {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.cta-button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+footer p {
+    pointer-events: auto;
+}
+
+/* 可点击元素的指针样式 */
+a, button, .clickable {
+    cursor: none !important;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+}
+
+/* 自定义指针样式 */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid #000;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none !important;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    will-change: transform;
+    transition: width 0.1s, height 0.1s;
+    visibility: visible;
+    display: block;
+}
+
+/* 点击动画效果 */
+.custom-cursor.clicking {
+    transform: translate(-50%, -50%) scale(0.8);
+    background: rgba(255, 255, 255, 1);
+    border-width: 3px;
+    opacity: 1;
+}
+
+/* 点击涟漪效果 */
+.cursor-ripple {
+    position: fixed;
+    pointer-events: none !important;
+    z-index: 99997;
+}
+
+@keyframes ripple {
+    0% {
+        width: 20px;
+        height: 20px;
+        opacity: 1;
+    }
+    100% {
+        width: 50px;
+        height: 50px;
+        opacity: 0;
+    }
+}
+
+/* 指针悬停在可点击元素上时的样式 */
+.custom-cursor.hover {
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #666;
+    opacity: 1;
+}
+
+/* 表情符号粒子样式 */
+.emoji-particle {
+    position: fixed;
+    pointer-events: none !important;
+    z-index: 99998;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+    will-change: transform, opacity;
+}
+
+/* 确保内容区域可以正常点击 */
+main, header, footer {
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+main {
+    min-height: calc(100vh - 120px);
+    padding-bottom: 60px;
+} 

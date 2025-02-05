@@ -1,0 +1,55 @@
+/* 指针系统样式 */
+* {
+    cursor: none !important;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: auto;
+}
+
+/* 自定义指针样式 */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid #000;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none !important;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    will-change: transform;
+    visibility: visible !important;
+    display: block !important;
+    opacity: 1 !important;
+}
+
+/* 点击动画效果 */
+.custom-cursor.clicking {
+    transform: translate(-50%, -50%) scale(0.8);
+    background: rgba(255, 255, 255, 1);
+    border-width: 3px;
+    opacity: 1;
+}
+
+/* 指针悬停在可点击元素上时的样式 */
+.custom-cursor.hover {
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #666;
+    opacity: 1;
+}
+
+/* 可点击元素的指针样式 */
+a, button, .clickable {
+    cursor: none !important;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+} 
